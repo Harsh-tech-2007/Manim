@@ -24,6 +24,10 @@ https://youtu.be/Qf8H7AKWClE?si=u6-hprgqqER3Wytg
 Follow this installation guide:
 https://youtu.be/Qf8H7AKWClE?si=XFkB3olysa-hUe0G
 
+##linux
+Follow this installation guide:
+https://youtu.be/P8xllhu-bXA?si=YWJonvaeF48J0kSY
+
 ## Running the Code
 
 Render a scene with:

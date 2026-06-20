@@ -107,7 +107,6 @@ class tri(Scene):
         sin_sq = axes.plot(lambda x: np.sin(x) ** 2, color=YELLOW, stroke_width=5)
         cos_sq = axes.plot(lambda x: np.cos(x) ** 2, color=RED, stroke_width=5)
         
-        # Swapped x for \theta in squared labels
         sin_sq_label = MathTex(r"\sin^2 x", font_size=32, color=YELLOW).next_to(
             axes.c2p(-5.1, np.sin(-5.1) ** 2), UP, buff=0.3
         )
@@ -154,14 +153,12 @@ class tri(Scene):
             )
         )
         
-        # Converted radians to degrees for live display
         live_sum = always_redraw(
             lambda: VGroup(
                 MathTex(rf"x = {tracker.get_value() * 180 / PI:.0f}^\circ", font_size=26, color=GREY_A),
             ).next_to(dot_sum, UP, buff=0.2)
         )
         
-        # Wrapped in always_redraw and converted radians to degrees
         live_eq = always_redraw(
             lambda: (
                 lambda eq: (
@@ -188,7 +185,6 @@ class tri(Scene):
             )
         )
 
-        # NEW: Live evaluation showing the calculated float values summing to 1
         live_eval = always_redraw(
             lambda: (
                 lambda eq: (
@@ -218,11 +214,10 @@ class tri(Scene):
                FadeIn(dot_sum),
                FadeIn(live_sum),
                FadeIn(live_eq),
-               FadeIn(live_eval), # NEW: Fade in the evaluation tracker
+               FadeIn(live_eval),
                run_time=0.6
            )
            
-        # Animate theta from -360° to 360°
         self.play(
                tracker.animate.set_value(TAU),
                run_time=8.2,
@@ -254,7 +249,7 @@ class tri(Scene):
                FadeOut(dot_cos),
                FadeOut(dot_sum),
                FadeOut(live_sum),
-               FadeOut(live_eval), # NEW: Fade out the evaluation tracker
+               FadeOut(live_eval),
                FadeOut(one_line),
                FadeOut(zero_line),
                FadeOut(fill),
@@ -263,12 +258,5 @@ class tri(Scene):
                FadeOut(live_eval),
                run_time=1.2
            )  
-        self.play(ReplacementTransform(live_eq, final_eq),run_time=1.0) 
-        # self.play(
-        #        final_eq.animate.
-        #        move_to(UP*1).
-        #        scale(1.2),
-        #        run_time=1
-        #    )
-           
+        self.play(ReplacementTransform(live_eq, final_eq),run_time=1.0)            
         self.wait(1)
